@@ -1,0 +1,13 @@
+# ADR-0000: Decision Title
+
+## Status
+Proposed
+
+## Context
+
+## Decision
+
+## Consequences
+
+## References
+

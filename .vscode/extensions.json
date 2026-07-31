@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vscode.powershell",
+    "davidanson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "eamodio.gitlens",
+    "github.copilot",
+    "github.copilot-chat"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PowerShell: Run Pester Tests",
+      "type": "shell",
+      "command": "Invoke-Pester",
+      "problemMatcher": []
+    },
+    {
+      "label": "Python: Run Pytest",
+      "type": "shell",
+      "command": "pytest",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.egg-info/
+.pytest_cache/
+
+# PowerShell
+*.ps1xml
+*.psm1.tmp
+
+# VS Code local
+.vscode/*.code-workspace.bak
+
+# Generated outputs
+output/
+generated/
+temp/
+tmp/
+
+# Office temp files
+~$*
+*.tmp
+
+# Logs
+*.log

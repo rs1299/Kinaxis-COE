@@ -1,0 +1,15 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "standards" },
+    { "path": "architecture" },
+    { "path": "accelerators" },
+    { "path": "products" },
+    { "path": "tools" }
+  ],
+  "settings": {
+    "files.eol": "
+",
+    "editor.formatOnSave": true
+  }
+}
