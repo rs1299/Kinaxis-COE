@@ -1,0 +1,61 @@
+Kinaxis-COE — Workspace Structure
+=================================
+Last refreshed: 2026-08-18
+
+This is a TWO-TIER workspace:
+
+  Kinaxis-COE/            PRIVATE working container (own git repo; NOT shared).
+                         Holds individual/scratch work and generated outputs.
+                         Does NOT track the nested shared repo (see .gitignore).
+
+  Kinaxis-COE/npi_solutions/   SHARED team repo (own git repo; published to BitBucket).
+                         Source of truth for standards, architecture, methodology,
+                         accelerators, skills, tools, and shareable product projects.
+
+The VS Code multi-root workspace (Kinaxis-COE.code-workspace) exposes exactly two
+roots: the private container (".") and the shared repo ("npi_solutions").
+
+-------------------------------------------------------------------------------
+PRIVATE CONTAINER  (C:\Repos\Kinaxis-COE\)
+-------------------------------------------------------------------------------
+  .gitignore                     Ignores npi_solutions/, private/, .venv, etc.
+  Kinaxis-COE.code-workspace     Two-root workspace definition.
+  RepositoryStructure.txt        This file.
+  .venv/                         Local Python environment (git-ignored).
+  accelerators/                  Local-only accelerator scratch (templates/).
+  reference-library/             Licensed Maestro Help (git-ignored).
+  tools/                         Local PowerShell utilities
+                                   Export-KnowledgeMarkdown.ps1
+                                   Publish-KnowledgeToSharePoint.ps1
+  private/                       All private/individual artifacts (git-ignored):
+      Ingest/                      Raw source workbooks / API contracts to process.
+      build/                       Generated outputs (workbooks/, knowledge-export/).
+      reports/                     Ad-hoc run reports and probes.
+      archive/                     Retired artifacts.
+      *.json                       Scratch data (baseline_s09a, parts, sites, ...).
+      npi_solutions.bundle         Local git bundle of the shared repo.
+
+-------------------------------------------------------------------------------
+SHARED TEAM REPO  (C:\Repos\Kinaxis-COE\npi_solutions\)  — published to BitBucket
+-------------------------------------------------------------------------------
+  README.md  CHANGELOG.md  CONTRIBUTING.md  requirements.txt  pytest.ini
+  .github/            Shared instructions, skills, workflows, PR templates.
+  standards/          Authoring, naming, UX, data-model, testing, performance, AI.
+  architecture/       Blueprints, decision-records, patterns, reference-architectures.
+  methodology/        Lifecycle guidance (discovery -> support).
+  accelerators/       Prompts, reusable-resources, starter-kits, templates.
+  products/           Shareable solution projects (AIOrchestration, PLM,
+                        PartProperties, ProductTransitions, SemanticLayer, ...).
+  examples/           Excellent / acceptable / anti-pattern examples + reviews.
+  governance/         Roadmap, change-requests, review-board, release-notes.
+  reference-library/  Curated shared reference material.
+  tools/              Reusable code (python/, powershell/, ai/, config/).
+  training/           Onboarding and enablement content.
+  Learning/           Captured lessons, patterns, decisions, promotion candidates.
+  tests/  Templates/
+
+-------------------------------------------------------------------------------
+PLACEMENT RULE
+-------------------------------------------------------------------------------
+  Shareable with the team  -> npi_solutions/  (standards, tools, shared projects).
+  Private / individual     -> private/        (scratch data, ingest, build output).

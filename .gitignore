@@ -26,3 +26,19 @@ tmp/
 
 # Logs
 *.log
+
+# Shared team repository — versioned independently in BitBucket.
+# The parent Kinaxis-COE is a private working container and must NOT
+# track the nested shared repo. Clone/pull npi_solutions separately.
+npi_solutions/
+
+# Private/individual working artifacts (scratch data, ingest sources,
+# generated build outputs, run reports). Never shared.
+private/
+
+# Local Copilot / M365 conversation exports (transient, not shared).
+.ms365copilot conversations/
+
+# Licensed Kinaxis product documentation — do NOT commit.
+# Sourced per-release from the Kinaxis Help portal (help.kinaxis.com).
+reference-library/Maestro Help/
