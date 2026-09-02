@@ -12,6 +12,20 @@
       "type": "shell",
       "command": "pytest",
       "problemMatcher": []
+    },
+    {
+      "label": "Workbook Lint Gate",
+      "detail": "Lint every promoted workbook under products/*/workbooks/ (CI gate).",
+      "type": "shell",
+      "command": "${workspaceFolder:npi_solutions}/../.venv/Scripts/python.exe",
+      "args": [
+        "tools/python/orchestrate.py",
+        "lint-gate"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder:npi_solutions}"
+      },
+      "problemMatcher": []
     }
   ]
 }

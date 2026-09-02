@@ -1,7 +1,8 @@
 {
   "folders": [
     { "name": "Kinaxis-COE (private container)", "path": "." },
-    { "name": "npi_solutions (shared team repo)", "path": "npi_solutions" }
+    { "name": "npi_solutions (shared team repo)", "path": "npi_solutions" },
+    { "name": "paulr (RR reference, read-only)", "path": "../paulr" }
   ],
   "settings": {
     "files.eol": "
