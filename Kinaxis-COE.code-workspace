@@ -2,7 +2,8 @@
   "folders": [
     { "name": "Kinaxis-COE (private container)", "path": "." },
     { "name": "npi_solutions (shared team repo)", "path": "npi_solutions" },
-    { "name": "paulr (RR reference, read-only)", "path": "../paulr" }
+    { "name": "paulr (RR reference, read-only)", "path": "../paulr" },
+    { "name": "maestro-solution-expert (peer reference, read-only)", "path": "../maestro-solution-expert" }
   ],
   "settings": {
     "files.eol": "
