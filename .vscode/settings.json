@@ -8,5 +8,53 @@
   },
   "powershell.codeFormatting.preset": "OTBS",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.typeCheckingMode": "basic",
+  // Auto-approve the local transformer toolchain + read-only shell helpers in the agent terminal so
+  // runs don't prompt each time. Rules match per SUB-COMMAND (regex tests the sub-command incl. its
+  // args), so a chained line still prompts if ANY part isn't approved. Writes (Remove-Item/Copy-Item/
+  // Set-*/Out-File/New-Item) and server mutations (rapidresponse_web_api) are NOT listed and keep
+  // prompting; rapidresponse_web_api is also explicitly denied.
+  "chat.tools.terminal.autoApprove": {
+    // Transformer toolchain — regex matches the script name within the python sub-command, so any
+    // venv-python path / cwd works.
+    "/maestro_workbook_standards_transformer\\.py/": true,
+    "/plm_workbench_standards_transformer\\.py/": true,
+    "/maestro_workbook_lint\\.py/": true,
+    "/validate_workbook_conversion\\.py/": true,
+    "/orchestrate\\.py/": true,
+    "/rename_workbook_symbol\\.py/": true,
+    "/pipeline_state\\.py/": true,
+    "/maestro_model\\.py/": true,
+    "/update_override_registry\\.py/": true,
+    "/knowledge_index\\.py/": true,
+    "/search_knowledge\\.py/": true,
+    "/\\bpytest\\b/": true,
+    "/\\bpy_compile\\b/": true,
+    // Read-only shell helpers used constantly during transformer work.
+    "cd": true,
+    "Set-Location": true,
+    "/^\\$env:[A-Za-z_][A-Za-z0-9_]*\\s*=/": true,
+    "Get-ChildItem": true,
+    "Get-Content": true,
+    "Get-Item": true,
+    "Get-Location": true,
+    "Test-Path": true,
+    "Resolve-Path": true,
+    "Select-String": true,
+    "Select-Object": true,
+    "Where-Object": true,
+    "ForEach-Object": true,
+    "Sort-Object": true,
+    "Measure-Object": true,
+    "Group-Object": true,
+    "Format-Table": true,
+    "Format-List": true,
+    "Out-String": true,
+    "Write-Host": true,
+    "Write-Output": true,
+    "Import-Csv": true,
+    "/^git (status|log|diff|show|blame|rev-parse|ls-files|branch --show-current)\\b/": true,
+    // Never auto-approve server mutations (delete/import/give) — always require approval.
+    "/rapidresponse_web_api/": false
+  }
 }
