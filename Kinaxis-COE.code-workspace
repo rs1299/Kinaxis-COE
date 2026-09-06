@@ -8,6 +8,10 @@
   "settings": {
     "files.eol": "
 ",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "dotnet.defaultSolution": "disable",
+    "omnisharp.autoStart": false,
+    "files.watcherExclude": { "**/paulr/**": true },
+    "search.exclude": { "**/paulr/**": true }
   }
 }
