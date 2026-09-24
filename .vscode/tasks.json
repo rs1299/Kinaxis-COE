@@ -26,6 +26,140 @@
         "cwd": "${workspaceFolder:npi_solutions}"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Session Status Board",
+      "detail": "Regenerate the multitasking board markdown (viewed in Markdown Preview).",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": [
+        "tools/python/session_manager.py",
+        "--days",
+        "30",
+        "--format",
+        "md",
+        "--out",
+        "${workspaceFolder}/.vscode/session-board.md"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "close": true,
+        "focus": false,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Session Status Board (HTML in browser)",
+      "detail": "Regenerate the board as HTML and open it in the default browser.",
+      "type": "shell",
+      "command": "& '${workspaceFolder}/.venv/Scripts/python.exe' tools/python/session_manager.py --days 30 --format html --out '${workspaceFolder}/.vscode/session-board.html'; Start-Process '${workspaceFolder}/.vscode/session-board.html'",
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "close": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Session Status Board (HTML)",
+      "detail": "Regenerate the board HTML file only (for the Simple Browser pane).",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": [
+        "tools/python/session_manager.py",
+        "--days",
+        "30",
+        "--format",
+        "html",
+        "--refresh",
+        "5",
+        "--out",
+        "${workspaceFolder}/.vscode/session-board.html"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "close": true,
+        "showReuseMessage": false
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Session Board: Hide item(s)",
+      "detail": "Hide board row number(s) from the status board, then refresh the pane.",
+      "type": "shell",
+      "command": "& '${workspaceFolder}/.venv/Scripts/python.exe' tools/python/session_manager.py --days 30 --dismiss ${input:boardRows}; & '${workspaceFolder}/.venv/Scripts/python.exe' tools/python/session_manager.py --days 30 --format html --refresh 5 --out '${workspaceFolder}/.vscode/session-board.html'",
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Session Board: Restore item",
+      "detail": "Un-hide by row number from the hidden list, or by session-id prefix; then refresh.",
+      "type": "shell",
+      "command": "& '${workspaceFolder}/.venv/Scripts/python.exe' tools/python/session_manager.py --restore ${input:restoreRef}; & '${workspaceFolder}/.venv/Scripts/python.exe' tools/python/session_manager.py --days 30 --format html --refresh 5 --out '${workspaceFolder}/.vscode/session-board.html'",
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Session Board: List hidden",
+      "detail": "List the items you have hidden (with row numbers for restore).",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": [
+        "tools/python/session_manager.py",
+        "--list-dismissed"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/npi_solutions"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "boardRows",
+      "type": "promptString",
+      "description": "Board row number(s) to hide (space-separated, e.g. 3 5)"
+    },
+    {
+      "id": "restoreRef",
+      "type": "promptString",
+      "description": "Restore: row # from 'List hidden', or a session-id prefix"
     }
   ]
 }

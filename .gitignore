@@ -13,6 +13,8 @@ venv/
 
 # VS Code local
 .vscode/*.code-workspace.bak
+.vscode/session-board.md
+.vscode/session-board.html
 
 # Generated outputs
 output/
